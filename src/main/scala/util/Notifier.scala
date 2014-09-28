@@ -67,7 +67,7 @@ class Mailer(private val smtp: Smtp) extends Notifier {
 
   def toNotify(r: RepositoryService.RepositoryInfo, issueId: Int, content: String)
       (msg: String => String)(implicit context: Context) = {
-    val database = Database(context.request.getServletContext)
+    val database = Database()
 
     val f = Future {
       database withSession { implicit session =>
